@@ -10,7 +10,7 @@
 # <a id="3"></a> Preprocess
 Split the dataset to test, val and test 
 ```
-python train_val_test.py   to split dataset
+python train_val_test.py
 ```
 # <a id="4"></a> Train
 Train DenseNet121 model, set batch size to 128, input size 128 and 50 epoch
