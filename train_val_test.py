@@ -20,10 +20,10 @@ for name in names:
     except:
         print('exist')
 
-    try:
-        os.makedirs(os.path.join(test, na))
-    except:
-        print('exist')
+    # try:
+    #     os.makedirs(os.path.join(test, na))
+    # except:
+    #     print('exist')
 
     path = os.path.join(data, na, '*.jpg')
     imgs = glob.glob(path)
@@ -34,7 +34,7 @@ for name in names:
 
     for img in imgs[int(len(imgs) * 0.7):int(len(imgs) * 0.8)]:
         image = os.path.basename(img)
-        shutil.copyfile(os.path.join(data, na, image), os.path.join(test, na, image))
+        shutil.copyfile(os.path.join(data, na, image), os.path.join(test, image))
 
     for img in imgs[int(len(imgs) * 0.8):]:
         image = os.path.basename(img)

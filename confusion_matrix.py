@@ -4,16 +4,31 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import cv2
 from sklearn.metrics import confusion_matrix
-import re
+import re, argparse
 from tensorflow import keras
+
+MODEL_MAP = {'resnet50': keras.applications.ResNet50V2,
+             'resnet152': keras.applications.ResNet152V2,
+             'inceptionresnet': keras.applications.InceptionResNetV2,
+             'densenet121': keras.applications.DenseNet121,
+             'densenet201': keras.applications.DenseNet201}
+
+"""Parses arguments."""
+parser = argparse.ArgumentParser(description='test TrashNet')
+parser.add_argument('-n', '--model_name', type=str, default='resnet50', help='Name of model.')
+parser.add_argument('-res', '--input_size', type=int, default=128, help='Input image resolution')
+
+args = parser.parse_args()
+
 
 CLASS_NUM = 6
 TEST_PATH = './test'
-MODEL_SAVED_FILE = './models/DenseNet201_128.hdf5'
+inputsize = args.input_size
+MODEL_SAVED_FILE = os.path.join('./models/', args.model_name + '.hdf5')
 
-model_resnet50_conv = keras.applications.DenseNet201(weights='imagenet', include_top=False)
-image_input = keras.layers.Input(shape=(128, 128, 3), name='input')
-x = model_resnet50_conv(image_input)
+model_ = MODEL_MAP[args.model_name](weights='imagenet', include_top=False)
+image_input = keras.layers.Input(shape=(inputsize, inputsize, 3), name='input')
+x = model_(image_input)
 x = keras.layers.GlobalAveragePooling2D()(x)
 x = keras.layers.Dense(CLASS_NUM, activation='softmax', name='predictions')(x)
 
@@ -25,7 +40,7 @@ X_pred, gt_label = [], []
 for image in sorted(os.listdir(TEST_PATH)):
     image_path = os.path.join(TEST_PATH, image)
     if image.endswith('.jpg'):
-        img = cv2.resize(cv2.imread(image_path), (128, 128))
+        img = cv2.resize(cv2.imread(image_path), (inputsize, inputsize))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = img.astype('float32') / 255
         X_pred.append(img)
