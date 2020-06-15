@@ -10,7 +10,7 @@ MODEL_MAP = {'resnet50': keras.applications.ResNet50V2,
 
 """Parses arguments."""
 parser = argparse.ArgumentParser(description='Train TrashNet')
-parser.add_argument('-n', '--model_name', type=str, default='resnet50', help='Name of model.')
+parser.add_argument('-n', '--model_name', type=str, default='densenet121', help='Name of model.')
 parser.add_argument('-bs', '--batch_size', type=int, default=128, help='Batch Size.')
 parser.add_argument('-res', '--input_size', type=int, default=128, help='Input image resolution')
 parser.add_argument('-epoch', '--epoch', type=int, default=50, help='Maximum Epoch')

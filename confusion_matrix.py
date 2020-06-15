@@ -15,7 +15,7 @@ MODEL_MAP = {'resnet50': keras.applications.ResNet50V2,
 
 """Parses arguments."""
 parser = argparse.ArgumentParser(description='test TrashNet')
-parser.add_argument('-n', '--model_name', type=str, default='resnet50', help='Name of model.')
+parser.add_argument('-n', '--model_name', type=str, default='densenet121', help='Name of model.')
 parser.add_argument('-res', '--input_size', type=int, default=128, help='Input image resolution')
 
 args = parser.parse_args()
