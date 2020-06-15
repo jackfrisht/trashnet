@@ -5,7 +5,10 @@
 * Pre-trained model https://drive.google.com/file/d/1j-BRmIJeNSa80yFAn5JxA_Ddv3FTwqWP/view?usp=sharing
 
 # <a id="2"></a> Requirement
-* Tensorflow-gpu 2.1  scikit-learn  opencv-python  matplotlib
+* Tensorflow-gpu 2.1  
+* scikit-learn  
+* opencv-python  
+* matplotlib
 
 # <a id="3"></a> Preprocess
 Split the dataset to test, val and test 
