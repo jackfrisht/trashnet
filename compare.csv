@@ -1,0 +1,3 @@
+name,resnet50v2,resnet152v2,inceptionresnetv2,densenet121,densenet201
+params,"23,577,094","58,343,942","54,345,958","7,043,654","18,333,510"
+acc,92.49%,93.28%,94.86%,95.26%,95.26%
