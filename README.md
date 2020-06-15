@@ -1,8 +1,10 @@
 # Trashnet
 
 # <a id="1"></a> Data Introduce
-* Download the dataset https://drive.google.com/drive/folders/0B3P9oO5A3RvSUW9qTG11Ul83TEE
 * Pre-trained model https://drive.google.com/file/d/1j-BRmIJeNSa80yFAn5JxA_Ddv3FTwqWP/view?usp=sharing
+ unzip to models
+* Download the dataset https://drive.google.com/drive/folders/0B3P9oO5A3RvSUW9qTG11Ul83TEE
+unzip the dataset_resized.zip and put in the root dir
 
 # <a id="2"></a> Requirement
 * Tensorflow-gpu 2.1  
