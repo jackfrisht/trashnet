@@ -25,7 +25,7 @@ python train.py --model_name densenet121 --batch_size 128 --input_size 128 --epo
 # <a id="5"></a> Predict 
 Test the trained model by images in test folder
 ```
-run python train.py --model_name densenet121 --input_size 128
+run python confusion_matrix.py --model_name densenet121 --input_size 128
 ```
 # <a id="6"></a> Confusion Matrix
 Confusion matrix image is saved in the root dir
