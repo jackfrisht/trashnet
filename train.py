@@ -2,6 +2,7 @@ from tensorflow import keras
 import argparse
 import os
 
+#set the models selection pool
 MODEL_MAP = {'resnet50': keras.applications.ResNet50V2,
              'resnet152': keras.applications.ResNet152V2,
              'inceptionresnet': keras.applications.InceptionResNetV2,
@@ -24,6 +25,7 @@ val_data = './val/'
 inputsize = args.input_size
 MODEL_SAVED_FILE = os.path.join('./models/', args.model_name + '.hdf5')
 
+#preprocessing the train dataset with augmentation
 train_datagen = keras.preprocessing.image.ImageDataGenerator(
         rotation_range=40,
         rescale=1./255,
@@ -46,6 +48,7 @@ validation_generator = test_datagen.flow_from_directory(
         class_mode='categorical',
         shuffle=True)
 
+#select model by args function
 model_ = MODEL_MAP[args.model_name](weights='imagenet', include_top=False)
 image_input = keras.layers.Input(shape=(inputsize, inputsize, 3), name='input')
 x = model_(image_input)
@@ -64,7 +67,7 @@ checkpoint = keras.callbacks.ModelCheckpoint(MODEL_SAVED_FILE,
                              verbose=1,
                              save_best_only=True,
                              mode='max')
-
+#learning rate schedul
 def lr_scheduler(epoch):
     if epoch < 10:
         lr = 0.001
